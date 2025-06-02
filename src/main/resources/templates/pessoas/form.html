@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+  <title>Pessoa Perdida</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" th:href="@{/style.css}" href="/style.css">
+</head>
+<body>
+<div class="container">
+  <h1>
+    <span th:if="${pessoaPerdida.id != null}">Editar Pessoa</span>
+    <span th:unless="${pessoaPerdida.id != null}">Nova Pessoa</span>
+  </h1>
+
+  <form th:action="@{/pessoas-perdidas}" th:object="${pessoaPerdida}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}"/>
+    <label>Nome: <input type="text" th:field="*{nome}" required/></label><br>
+    <label>Idade: <input type="number" th:field="*{idade}" required/></label><br>
+    <label>Data do Desaparecimento: <input type="date" th:field="*{dataDesaparecimento}" required/></label><br>
+    <label>Local do Desaparecimento: <input type="text" th:field="*{localDesaparecimento}" required/></label><br>
+    <label>Telefone Contato: <input type="text" th:field="*{telefoneContato}" required/></label><br>
+    <label>Foto: <input type="file" name="fileFoto" accept="image/*"/></label>
+    <div th:if="${pessoaPerdida.fotoBase64}">
+      <p>Foto atual:</p>
+      <img th:src="'data:image/jpeg;base64,' + ${pessoaPerdida.fotoBase64}" style="max-width:200px;max-height:200px;"/>
+    </div>
+    <button type="submit" th:text="${pessoaPerdida.id != null} ? 'Atualizar' : 'Salvar'">Salvar</button>
+  </form>
+  <a th:href="@{/pessoas-perdidas}">Voltar</a>
+</div>
+</body>
+</html>

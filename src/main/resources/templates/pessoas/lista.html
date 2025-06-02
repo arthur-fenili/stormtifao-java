@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <title>Pessoas Perdidas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/style.css}" href="/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Pessoas Perdidas</h1>
+    <a th:href="@{/pessoas-perdidas/nova}" class="card-btn" style="margin-bottom:24px;display:inline-block;">Nova Pessoa</a>
+    <div class="cards-grid">
+        <div class="card" th:each="pessoa : ${pessoas}">
+            <img th:if="${pessoa.fotoBase64}" th:src="'data:image/jpeg;base64,' + ${pessoa.fotoBase64}" class="card-img" alt="Foto"/>
+            <div class="card-content">
+                <div class="card-title" th:text="${pessoa.nome}"></div>
+                <div class="card-attr"><b>Idade:</b> <span th:text="${pessoa.idade}"></span></div>
+                <div class="card-attr"><b>Data do Desaparecimento:</b> <span th:text="${pessoa.dataDesaparecimento}"></span></div>
+                <div class="card-attr"><b>Local:</b> <span th:text="${pessoa.localDesaparecimento}"></span></div>
+                <div class="card-attr"><b>Contato:</b> <span th:text="${pessoa.telefoneContato}"></span></div>
+            </div>
+            <div class="card-actions">
+                <a th:href="@{|/pessoas-perdidas/editar/${pessoa.id}|}" class="card-btn">Editar</a>
+                <a th:href="@{|/pessoas-perdidas/deletar/${pessoa.id}|}" class="card-btn"
+                   onclick="return confirm('Tem certeza que deseja deletar?');">Deletar</a>
+            </div>
+        </div>
+    </div>
+    <a th:href="@{/}" class="btn-voltar">Voltar para o início</a>
+</div>
+</body>
+</html>
