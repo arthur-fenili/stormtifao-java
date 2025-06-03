@@ -1,32 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Previsão e Risco de Tempestade</title>
+  <title th:text="#{title.dashboard.analise}">Previsão e Risco de Tempestade</title>
   <link rel="stylesheet" th:href="@{/style.css}" />
 </head>
 <body>
 <th:block th:replace="~{fragments/header :: header}"/>
 <div class="container">
   <div class="list-header">
-    <h1>Risco de Tempestade/Furacão - Análise por IA</h1>
+    <h1 th:text="#{title.dashboard.analise}">Risco de Tempestade/Furacão - Análise por IA</h1>
   </div>
   <form method="get" th:action="@{/dashboard/weather}" style="max-width:420px;margin:auto;">
-    <label for="cidade">Selecione a cidade:</label>
+    <label for="cidade" th:text="#{label.selecione.cidade}">Selecione a cidade:</label>
     <select id="cidade" name="cidade" required style="width:100%;padding:10px;border-radius:7px;margin-bottom:16px;">
-      <option value="">Selecione...</option>
+      <option value="" th:text="#{option.selecione}">Selecione...</option>
       <option th:each="cidade : ${cidades}"
               th:value="${cidade}"
               th:text="${cidade}"
               th:selected="${cidade == selectedCidade}"></option>
     </select>
-    <button type="submit" class="card-btn" style="width:100%;">Analisar</button>
+    <button type="submit" class="card-btn" style="width:100%;" th:text="#{button.analisar}">Analisar</button>
   </form>
 
   <div th:if="${weatherSummary}" style="margin-top:36px;">
     <div class="card" style="max-width:520px;margin:auto;">
-      <div class="card-title">Dados do Clima em <span th:text="${selectedCidade}"></span>:</div>
+      <div class="card-title">
+        <span th:text="#{label.dados.clima}"></span>
+        <span th:text="${selectedCidade}"></span>:
+      </div>
       <div class="card-attr" th:text="${weatherSummary}"></div>
-      <div class="card-title" style="margin-top:18px;">Análise da IA</div>
+      <div class="card-title" style="margin-top:18px;" th:text="#{label.analise.ia}">Análise da IA</div>
       <div class="card-attr" th:text="${analysis}"></div>
     </div>
   </div>
