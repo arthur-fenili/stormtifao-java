@@ -1,11 +1,12 @@
 <header class="main-header" th:fragment="header">
     <div class="header-content">
         <span class="logo">
-            <img th:src="logo.png" alt="Logo" class="logo-img"/>
+            <img th:src="@{/logo.png}" alt="Logo" class="logo-img"/>
             StormTifão - Global Solution</span>
         <nav class="header-nav">
             <a th:href="@{/pessoas-perdidas}">Pessoas Perdidas</a>
             <a th:href="@{/shelters}">Abrigos</a>
+            <a th:href="@{/dashboard/weather}">Previsão de Risco</a>
         </nav>
     </div>
 </header>
