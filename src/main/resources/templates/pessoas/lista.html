@@ -6,9 +6,12 @@
     <link rel="stylesheet" th:href="@{/style.css}" href="/style.css">
 </head>
 <body>
+<th:block th:replace="~{fragments/header :: header}"/>
 <div class="container">
-    <h1>Pessoas Perdidas</h1>
-    <a th:href="@{/pessoas-perdidas/nova}" class="card-btn" style="margin-bottom:24px;display:inline-block;">Nova Pessoa</a>
+    <div class="list-header">
+        <h1>Pessoas Perdidas</h1>
+        <a th:href="@{/pessoas-perdidas/nova}" class="card-btn">Reportar Desaparecimento</a>
+    </div>
     <div class="cards-grid">
         <div class="card" th:each="pessoa : ${pessoas}">
             <img th:if="${pessoa.fotoBase64}" th:src="'data:image/jpeg;base64,' + ${pessoa.fotoBase64}" class="card-img" alt="Foto"/>
@@ -28,5 +31,6 @@
     </div>
     <a th:href="@{/}" class="btn-voltar">Voltar para o início</a>
 </div>
+<th:block th:replace="~{fragments/footer :: footer}"/>
 </body>
 </html>
