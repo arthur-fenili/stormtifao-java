@@ -81,7 +81,6 @@ Para você, professor, enviarei um arquivo .txt com as configurações necessár
 | `/pessoas-perdidas/editar/{id}`    | GET    | Sim       | Editar pessoa                                          |
 | `/pessoas-perdidas/deletar/{id}`   | GET    | Sim       | Exclui pessoa                                          |
 | `/dashboard/weather`               | GET    | Sim       | Dashboard de risco climático                           |
-| `/shelters`                        | GET    | Sim       | Listagem de abrigos (mock, não integrado)              |
 | `/login`                           | GET    | Não       | Autenticação via Google                                |
 | `/logout`                          | GET    | Sim       | Logout                                                 |
 
