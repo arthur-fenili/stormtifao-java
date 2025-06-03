@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>StormTifão - Global Solution</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/style.css}" href="/style.css">
 </head>
 <body>
-<th:block th:replace="fragments/header :: header"/>
+<th:block th:replace="~{fragments/header :: header}"/>
 
-<th:block th:replace="fragments/footer :: footer"/>
+<div class="container" style="max-width:850px;margin-top:50px;">
+    <h1 style="text-align:center; color:#2471a3; margin-bottom:30px;">
+        StormTifão - Global Solution
+    </h1>
+    <p style="font-size:1.17rem; text-align:center; color:#1a355e; margin-bottom:25px;">
+        <b>Solução integrada para gestão de desastres naturais</b>
+    </p>
+    <div style="font-size:1.11rem; line-height:1.6; color:#19446e; background:#f7fbff; border-radius:15px; box-shadow:0 2px 10px #b5d3ee38; padding:30px 35px;">
+        Este projeto foi desenvolvido para o <b>Global Solution FIAP</b> e simula uma plataforma de apoio à população e autoridades em situações de eventos extremos como tempestades e furacões.<br/><br/>
+        <b>Funcionalidades:</b>
+        <ul style="margin:18px 0 20px 32px;">
+            <li>Cadastro e listagem de <b>pessoas desaparecidas</b> durante desastres.</li>
+            <li>Consulta de <b>abrigos seguros</b> integrados a outras aplicações (mobile e .NET).</li>
+            <li>Dashboard de <b>previsão de risco</b> de tempestade ou furacão utilizando inteligência artificial sobre dados reais de clima.</li>
+            <li>Interface amigável, responsiva e multilíngue (PT/EN).</li>
+            <li>Autenticação via OAuth2 (Google) para maior segurança.</li>
+        </ul>
+        <b>Objetivo:</b><br/>
+        Facilitar o registro de desaparecidos, informar sobre locais seguros e fornecer alertas inteligentes, ajudando a salvar vidas e otimizar recursos em momentos críticos.
+        <br/><br/>
+        <b>Equipe:</b> [Insira nomes dos integrantes aqui]<br/>
+        <b>Curso:</b> Análise e Desenvolvimento de Sistemas - FIAP<br/>
+        <b>Desafio:</b> Global Solution 2025
+    </div>
+</div>
+
+<th:block th:replace="~{fragments/footer :: footer}"/>
 </body>
 </html>

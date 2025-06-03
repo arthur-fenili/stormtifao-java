@@ -1,14 +1,22 @@
-<header class="main-header" th:fragment="header">
-    <div class="header-content">
+<header class="main-header" th:fragment="header"
+        xmlns:th="http://www.thymeleaf.org">
+    <div class="header-content" style="display: flex; align-items: center; justify-content: space-between;">
         <span class="logo">
             <img th:src="@{/logo.png}" alt="Logo" class="logo-img"/>
-            StormTifão - Global Solution</span>
+            StormTifão - Global Solution
+        </span>
+        <span th:if="${isAuthenticated == null or !isAuthenticated}">
+            <a th:href="@{/login}">Entrar</a>
+        </span>
+        <span th:if="${isAuthenticated != null and isAuthenticated}">
+            <a th:href="@{/logout}">Sair</a>
+        </span>
         <nav class="header-nav">
             <a th:href="@{/pessoas-perdidas}">Pessoas Perdidas</a>
             <a th:href="@{/shelters}">Abrigos</a>
             <a th:href="@{/dashboard/weather}">Previsão de Risco</a>
-            <a th:href="@{${currentPath}(lang='pt_BR')}">🇧🇷</a>
-            <a th:href="@{${currentPath}(lang='en_US')}">🇺🇸</a>
+            <a th:href="@{${currentPath}(lang='pt_BR')}">BR</a>
+            <a th:href="@{${currentPath}(lang='en_US')}">US</a>
         </nav>
     </div>
 </header>

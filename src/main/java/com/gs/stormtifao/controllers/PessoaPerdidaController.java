@@ -2,8 +2,10 @@ package com.gs.stormtifao.controllers;
 
 import com.gs.stormtifao.models.PessoaPerdida;
 import com.gs.stormtifao.services.PessoaPerdidaService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,8 +34,13 @@ public class PessoaPerdidaController {
     }
 
     @PostMapping
-    public String salvar(@ModelAttribute PessoaPerdida pessoa,
-                         @RequestParam("fileFoto") MultipartFile fileFoto) {
+    public String salvar(@Valid @ModelAttribute PessoaPerdida pessoa, BindingResult bindingResult,
+                         @RequestParam(value = "fileFoto", required = false) MultipartFile fileFoto) {
+
+        if (bindingResult.hasErrors()) {
+            return "pessoas/form";
+        }
+
         if (fileFoto != null && !fileFoto.isEmpty()) {
             try {
                 String base64 = Base64.getEncoder().encodeToString(fileFoto.getBytes());

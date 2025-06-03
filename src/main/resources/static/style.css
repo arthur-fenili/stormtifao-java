@@ -33,7 +33,7 @@ body {
 .header-content {
     max-width: 1300px;
     margin: 0 auto;
-    display: flex;
+    /*display: flex;*/
     align-items: center;
     justify-content: space-between;
     padding: 14px 30px;
@@ -414,4 +414,29 @@ img {
         font-size: 1.15rem;
         text-align: center;
     }
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+    color: #165a99;
+    font-size: 1.07rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="file"] {
+    width: 100%;
+}
+
+.error-msg {
+    color: #c0392b;
+    font-size: 0.97rem;
+    margin-bottom: 10px;
 }

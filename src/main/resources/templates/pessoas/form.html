@@ -14,16 +14,48 @@
 
   <form th:action="@{/pessoas-perdidas}" th:object="${pessoaPerdida}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}"/>
-    <label th:text="#{label.nome}">Nome: <input type="text" th:field="*{nome}" required/></label><br>
-    <label th:text="#{label.idade}">Idade: <input type="number" th:field="*{idade}" required/></label><br>
-    <label th:text="#{label.data.desaparecimento}">Data do Desaparecimento: <input type="date" th:field="*{dataDesaparecimento}" required/></label><br>
-    <label th:text="#{label.local.desaparecimento}">Local do Desaparecimento: <input type="text" th:field="*{localDesaparecimento}" required/></label><br>
-    <label th:text="#{label.telefone.contato}">Telefone Contato: <input type="text" th:field="*{telefoneContato}" required/></label><br>
-    <label th:text="#{label.foto}">Foto: <input type="file" name="fileFoto" accept="image/*"/></label>
-    <div th:if="${pessoaPerdida.fotoBase64}">
+
+    <div class="form-group">
+      <label th:for="*{nome}" th:text="#{label.nome}">Nome:</label>
+      <input type="text" th:field="*{nome}" required/>
+      <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="error-msg"></div>
+    </div>
+
+    <div class="form-group">
+      <label th:for="*{idade}" th:text="#{label.idade}">Idade:</label>
+      <input type="number" th:field="*{idade}" required/>
+      <div th:if="${#fields.hasErrors('idade')}" th:errors="*{idade}" class="error-msg"></div>
+    </div>
+
+    <div class="form-group">
+      <label th:for="*{dataDesaparecimento}" th:text="#{label.data.desaparecimento}">Data do Desaparecimento:</label>
+      <input type="date" th:field="*{dataDesaparecimento}" required/>
+      <div th:if="${#fields.hasErrors('dataDesaparecimento')}" th:errors="*{dataDesaparecimento}" class="error-msg"></div>
+    </div>
+
+    <div class="form-group">
+      <label th:for="*{localDesaparecimento}" th:text="#{label.local.desaparecimento}">Local do Desaparecimento:</label>
+      <input type="text" th:field="*{localDesaparecimento}" required/>
+      <div th:if="${#fields.hasErrors('localDesaparecimento')}" th:errors="*{localDesaparecimento}" class="error-msg"></div>
+    </div>
+
+    <div class="form-group">
+      <label th:for="*{telefoneContato}" th:text="#{label.telefone.contato}">Telefone Contato:</label>
+      <input type="text" th:field="*{telefoneContato}" required/>
+      <div th:if="${#fields.hasErrors('telefoneContato')}" th:errors="*{telefoneContato}" class="error-msg"></div>
+    </div>
+
+    <div class="form-group">
+      <label th:text="#{label.foto}">Foto:</label>
+      <input type="file" name="fileFoto" accept="image/*"/>
+      <!-- Não validamos arquivo aqui, mas pode colocar uma mensagem customizada via flash attribute se quiser -->
+    </div>
+
+    <div class="form-group" th:if="${pessoaPerdida.fotoBase64}">
       <p th:text="#{label.foto.atual}">Foto atual:</p>
       <img th:src="'data:image/jpeg;base64,' + ${pessoaPerdida.fotoBase64}" style="max-width:200px;max-height:200px;"/>
     </div>
+
     <button type="submit"
             th:text="${pessoaPerdida.id != null} ? #{button.atualizar} : #{button.salvar}">
       Salvar
