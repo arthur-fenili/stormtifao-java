@@ -10,7 +10,6 @@ O StormTifão é um sistema web que permite:
 - **Internacionalização** (português/inglês) para alcance global.
 - **Autenticação via Google OAuth2**, garantindo segurança e privacidade.
 - **Integração assíncrona via RabbitMQ**: todo cadastro de pessoa desaparecida publica a mensagem correspondente na fila.
-- **Dashboard de risco climático**: escolha uma cidade, veja dados climáticos e análise de risco.
 - **Interface moderna e responsiva**, pensada para facilitar o uso em situações críticas.
 
 ---
@@ -25,7 +24,6 @@ O StormTifão é um sistema web que permite:
 - Docker (RabbitMQ container)
 - OpenWeather API (dados climáticos)
 - Cohere API (análise IA dos dados do tempo)
-- HTML5, CSS3, JavaScript (básico), responsividade
 
 ---
 
@@ -34,10 +32,12 @@ O StormTifão é um sistema web que permite:
 ### 1. **Pré-requisitos**
 
 - **Java 21** instalado
-- **Maven** instalado
+- **Gradle** instalado
 - **Docker** instalado (para subir o RabbitMQ)
 - **Conta Google** (para autenticação)
 - **Chave da API OpenWeather** (configure no seu `application.properties`)
+- **Chave da API Cohere**
+- **Secrets do Google para OAuth**
 
 ### 2. **Clone o repositório**
 
